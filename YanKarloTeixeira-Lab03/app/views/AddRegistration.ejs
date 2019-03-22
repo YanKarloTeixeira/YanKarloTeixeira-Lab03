@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!-- Use the 'title' property to render a page title  -->
+    <title><%= title %></title>
+    <link rel="stylesheet" type="text/css" href="css/loginstyle.css" />
+    <link rel="stylesheet" type="text/css" href="css/display.css" />
+
+</head>
+<body>
+    <!-- Render the signup form  -->
+    <form action="/CreateRegistration" method="post">
+        <div class="outer_container">
+            <h2> Registering Student in a Course </h2>
+
+            <div class="container">
+                <label>Student Number:</label>
+                <input type="text" class="fields" name="studentNumber" />
+            </div>
+            <div class="container">
+                <label>Course Code:</label>
+                <input type="text" class="fields" name="courseCode" />
+            </div>
+            <div class="container">
+                <button type="submit" class="form-field-no-caption">Register</button>
+            </div>
+        </div>
+    </form>
+
+</body>
+</html>

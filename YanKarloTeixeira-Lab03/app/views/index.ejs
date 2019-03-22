@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Use the 'title' property to render a page title  -->
+    <title><%= title %></title>
+    <link rel="stylesheet" type="text/css" href="css/display.css" />
+
+</head>
+<body>
+
+
+    <!-- If a user is authenticated, display the user's full name , otherwise display the authentication links -->
+    <% if ( userFullName ) { %>
+    <h2>Hello <%=userFullName%> </h2>
+    <div class="container">
+        <table class="center">
+            <tr>
+                <td>
+                    <!-- Load the static image file  -->
+                    <img class="center" src="img/courselogo.png" alt="Logo">
+                </td>
+            </tr>
+            <tr>
+                <td><a href="/createCourse">Add new Course</a></td>
+            </tr>
+            <tr>
+                <td><a href="/readCourseUpdate">Read Course</a></td>
+            </tr>
+            <tr>
+                <td><a href="/deleteCourseForm">Delete a Course</a></td>
+            </tr>
+            <tr>
+                <td><a href="/coursesList">Courses List</a></td>
+            </tr>
+            <tr>
+            </tr>
+            <tr>
+                <td><a href="/studentsList">List Students</a></td>
+            </tr>
+            <tr>
+                <td><a href="/signout">Sign out</a></td>
+            </tr>
+        </table>
+    </div>
+    <% } else { %>
+
+    <div class="container">
+        <table class="center">
+            <tr>
+                <td class="center"><a href="/signup">Sign Up</a></td>
+            </tr>
+            <tr>
+                <td class="center"></td>
+            </tr>
+            <tr>
+                <td class="center"><a href="/signin">Sign In</a></td>
+            </tr>
+
+        </table>
+    </div>
+
+    <% } %>
+    <br>
+
+</body>
+</html>

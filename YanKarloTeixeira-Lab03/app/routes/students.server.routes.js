@@ -1,0 +1,66 @@
+// Load the module dependencies
+const students = require('../controllers/students.server.controller');
+const passport = require('passport');
+
+// Define the routes module' method
+module.exports = function(app) {
+	// Set up the 'signup' routes 
+		app.route('/signup')
+		.get(students.renderSignup)
+		.post(students.signup);
+
+		// Set up the 'signin' routes 
+		app.route('/signin')
+		.get(students.renderSignin)
+		.post(passport.authenticate('local', {
+				successRedirect: '/',
+				failureRedirect: '/signin',
+				failureFlash: true
+		}));
+
+		// Set up the Facebook OAuth routes 
+		app.get('/oauth/facebook', passport.authenticate('facebook', {
+			failureRedirect: '/signin'
+		}));
+		app.get('/oauth/facebook/callback', passport.authenticate('facebook', {
+			failureRedirect: '/signin',
+			successRedirect: '/'
+		}));
+
+		// Set up the Twitter OAuth routes 
+		app.get('/oauth/twitter', passport.authenticate('twitter', {
+			failureRedirect: '/signin'
+		}));
+		app.get('/oauth/twitter/callback', passport.authenticate('twitter', {
+			failureRedirect: '/signin',
+			successRedirect: '/'
+		}));
+
+		// Set up the Google OAuth routes 
+		app.get('/oauth/google', passport.authenticate('google', {
+			scope: [
+				'https://www.googleapis.com/auth/userinfo.profile',
+				'https://www.googleapis.com/auth/userinfo.email'
+			],
+			failureRedirect: '/signin'
+		}));
+		app.get('/oauth/google/callback', passport.authenticate('google', {
+			failureRedirect: '/signin',
+			successRedirect: '/'
+		}));
+
+		// Set up the 'signout' route
+    app.get('/signout', students.signout);
+
+    app.get('/studentsList', students.studentsList);
+
+    app.param('studentId', students.studentByID);
+
+    app.route('/updateStudent/:studentId')
+        .get(students.readStudent)
+        .put(students.updateStudent);
+
+    app.route('/deleteStudent/:studentId')
+        .get(students.deleteStudent);
+
+};
