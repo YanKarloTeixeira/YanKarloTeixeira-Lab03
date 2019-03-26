@@ -20,7 +20,7 @@ module.exports = function (app) {
 
       app.route("/registrationsByCourse")
         .post(registrations.registrationsByCourse);
-    // app.param("courseCode", courses.courseByCourseCode);
+    //app.param("courseCode", registrations.findCourseIdByCourseCode);
 
     // app.route("/deleteRegistrationByStudent")
     //     .delete();

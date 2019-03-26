@@ -1,7 +1,7 @@
 ﻿const mongoose = require("mongoose");
-const Course = mongoose.model("Course");
-const Registration = mongoose.model("Registration");
-const Student = mongoose.model("Student");
+const Course = mongoose.model("Courses");
+const Registration = mongoose.model("Registrations");
+const Student = mongoose.model("Students");
 const passport = require("passport");
 
 //
@@ -108,12 +108,13 @@ exports.hasAuthorization = function(req, res, next) {
 
 exports.StudentsByCourseCode = function(req, res, courseCode) {
   Course.find({ courseCode: courseCode })
+    
     .forEach(function(courseDoc) {
-      Registration.find({ courseCode: courseDoc.courseCode }).forEach(function(
-        registrationDoc
-      ) {
-        Student.findOne({ studentNumeber: registrationDoc.studentNumeber });
-      });
+      Registration.find({ courseCode: courseDoc.courseCode }).forEach(
+        function(registrationDoc) {
+          Student.findOne({ studentNumeber: registrationDoc.studentNumeber });
+        }
+      );
     })
     .exec((err, students) => {
       if (err) {

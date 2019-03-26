@@ -43,4 +43,4 @@ const CourseSchema = new Schema({
 //};
 
 // Create the 'Student' model out of the 'UserSchema'
-mongoose.model("Course", CourseSchema);
+mongoose.model("Courses", CourseSchema);

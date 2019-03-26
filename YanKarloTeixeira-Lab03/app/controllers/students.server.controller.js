@@ -1,5 +1,5 @@
 // Load the module dependencies
-const Student = require("mongoose").model("Student");
+const Student = require("mongoose").model("Students");
 const passport = require("passport");
 
 // Create a new error handling controller method
@@ -94,6 +94,7 @@ exports.signup = function(req, res, next) {
         if (err) return next(err);
 
         // Redirect the user back to the main application page
+        
         return res.redirect("/");
       });
     });

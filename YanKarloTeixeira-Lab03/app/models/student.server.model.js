@@ -112,5 +112,12 @@ UserSchema.set('toJSON', {
 	virtuals: true
 });
 
+UserSchema.statics.findOneByStudentNumber = function (studentNumber, callback) {
+	// Use the 'findOne' method to retrieve a user document
+	this.findOne({
+		username: studentNumber.trim()
+	}, callback);
+};
+
 // Create the 'Student' model out of the 'UserSchema'
-mongoose.model('Student', UserSchema);
+mongoose.model('Students', UserSchema);
