@@ -4,11 +4,6 @@ const passport = require("passport");
 
 // Define the routes module' method
 module.exports = function(app) {
-  app.route("/readCourseUpdate")
-    .get(courses.renderReadCourseFormForUpdate);
-  app.route("/updateCourseTest")
-  .get(courses.updateCourseTest)
-  .put();
   app
     .route("/createCourse")
     .get(courses.render)

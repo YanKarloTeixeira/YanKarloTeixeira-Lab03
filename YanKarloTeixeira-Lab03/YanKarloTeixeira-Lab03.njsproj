@@ -65,6 +65,7 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="app\views\ReadACourse.ejs" />
+    <Content Include="app\views\RegistrationByCourse.ejs" />
     <Content Include="app\views\UpdateCourse.ejs" />
     <Content Include="app\views\AddCourse.ejs">
       <SubType>Code</SubType>
