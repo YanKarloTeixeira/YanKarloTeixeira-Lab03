@@ -94,7 +94,7 @@ exports.signup = function(req, res, next) {
         if (err) return next(err);
 
         // Redirect the user back to the main application page
-        
+        // req.session = user;
         return res.redirect("/");
       });
     });
@@ -137,6 +137,7 @@ exports.saveOAuthUserProfile = function(req, profile, done) {
               // Try saving the new user document
               user.save(function(err) {
                 // Continue to the next middleware
+                // req.session = user;
                 return done(err, user);
               });
             }
@@ -154,12 +155,13 @@ exports.saveOAuthUserProfile = function(req, profile, done) {
 exports.signout = function(req, res) {
   // Use the Passport 'logout' method to logout
   req.logout();
+  req.session.user=null;
 
   // Redirect the user back to the main application page
   res.redirect("/");
 };
 
-exports.studentsList = function(req, res) {
+exports.list = function(req, res) {
   Student.find().exec((err, students) => {
     if (err) {
       return res.status(400).send({
@@ -175,7 +177,7 @@ exports.studentsList = function(req, res) {
 };
 //
 
-exports.readStudent = function(req, res) {
+exports.read = function(req, res) {
   res.status(200).json(req.student);
 };
 //
@@ -187,7 +189,7 @@ exports.studentByID = function(req, res, next, id) {
     next();
   });
 };
-exports.updateStudent = function(req, res) {
+exports.update = function(req, res) {
   const student = new Student(req.student);
   student.save(err => {
     if (err) {
@@ -200,7 +202,7 @@ exports.updateStudent = function(req, res) {
   });
 };
 //
-exports.deleteStudent = function(req, res) {
+exports.delete = function(req, res) {
   const student = new Student(req.student);
   student.remove(err => {
     if (err) {

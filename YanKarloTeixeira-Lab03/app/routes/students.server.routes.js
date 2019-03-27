@@ -52,15 +52,15 @@ module.exports = function(app) {
 		// Set up the 'signout' route
     app.get('/signout', students.signout);
 
-    app.get('/studentsList', students.studentsList);
+    app.get('/studentsList', students.list);
 
     app.param('studentId', students.studentByID);
 
     app.route('/updateStudent/:studentId')
-        .get(students.readStudent)
-        .put(students.updateStudent);
+        .get(students.read)
+        .put(students.update);
 
     app.route('/deleteStudent/:studentId')
-        .get(students.deleteStudent);
+        .get(students.delete);
 
 };

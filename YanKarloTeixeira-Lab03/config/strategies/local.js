@@ -31,7 +31,7 @@ module.exports = function() {
 			}
 			
 			// Otherwise, continue to the next middleware with the user object
-			return done(null, student);
+		return done(null, student);
 		});
 	}));
 };

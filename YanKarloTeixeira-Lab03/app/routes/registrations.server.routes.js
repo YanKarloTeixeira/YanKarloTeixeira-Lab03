@@ -12,7 +12,10 @@ module.exports = function (app) {
     // app.route("/listRegistrationByCourse")
     app.route("/createRegistration")
     .get(registrations.render)
-    .post(registrations.createRegistration);
+    .post(registrations.create);
+
+    app.route("/deleteRegistration")
+    .post(registrations.delete);
 
     app
       .route("/registrationsByCourse2")

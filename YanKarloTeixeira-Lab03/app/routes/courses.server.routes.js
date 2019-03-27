@@ -7,13 +7,13 @@ module.exports = function(app) {
   app
     .route("/createCourse")
     .get(courses.render)
-    .post(courses.createCourse);
+    .post(courses.create);
 
-  app.route("/coursesList").get(courses.coursesList);
+  app.route("/coursesList").get(courses.list);
 
-  app.route("/readCourse/:courseCode").post(courses.readCourse);
-  app.route("/updateCourse/:courseCode").put(courses.updateCourse);
-  app.param("courseCode", courses.courseByCourseCode);
+  app.route("/readCourse").post(courses.read);
+  app.route("/updateCourse").put(courses.update);
+  //app.param("courseCode", courses.courseByCourseCode);
 
-  app.route("/deleteCourse/:courseCode").get(courses.StudentsByCourseCode);
+  app.route("/deleteCourse").get(courses.delete);
 };
